@@ -1,0 +1,29 @@
+<div class="form-container">
+  <form [formGroup]="form" (ngSubmit)="display()" class="input-form">
+    <input type="text" formControlName="name" placeholder="Product name" />
+    <input type="text" formControlName="description" placeholder="Product description" />
+    <input type="text" formControlName="image" placeholder="Product image URL" />
+    <input type="text" formControlName="rate" placeholder="Product rate" />
+
+    <button type="submit" [disabled]="form.invalid">Display</button>
+  </form>
+</div>
+
+<hr />
+
+@if (products.length > 0) {
+  <div class="product-grid">
+    @for (product of products; track product) {
+      <div class="card">
+        <!-- ✅ Dynamic image -->
+        <img [src]="product.image || 'assets/images/default.jpg'" alt="{{ product.name }}" />
+
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <strong>{{ product.rate }}/5</strong>
+      </div>
+    }
+  </div>
+} @else {
+  <p>No products yet. Add one above!</p>
+}
