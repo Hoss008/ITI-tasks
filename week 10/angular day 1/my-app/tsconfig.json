@@ -1,0 +1,35 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true, // checking behavior that results in stronger guarantees of program correctness
+    "noImplicitOverride": true, //enforces the use of the override keyword for methods
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true, //Every function must return something
+    "noFallthroughCasesInSwitch": true, //Forces you to use break in switch statements to avoid bugs.
+    "skipLibCheck": true, //Skip type checking of declaration files (node modules)
+    "isolatedModules": true, //TypeScript to ensure that each file in a project can be compiled independently
+    "experimentalDecorators": true, //because angular uses decorators like @Component 
+    "importHelpers": true, 
+    "target": "ES2022", //js version
+    "module": "preserve" //ES modules as-is (import/export
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false, //Turns off old i18n message ID format → Angular uses stable, modern IDs for translations
+    "strictInjectionParameters": true, // reports an error for a supplied parameter whose injection type cannot be determined
+    "strictInputAccessModifiers": true, //Makes Angular respect private/protected
+    "typeCheckHostBindings": true,
+    "strictTemplates": true //Enables full template type-checking (your HTML is checked as your TS).
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
+
