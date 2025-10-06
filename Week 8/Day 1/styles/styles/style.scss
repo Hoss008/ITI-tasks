@@ -1,0 +1,54 @@
+$primary-color: #3498db;
+$secondary-color: #e67e22;
+
+.main {
+  &-title {
+    color: $primary-color;
+  }
+  &-subtitle{
+    color: $secondary-color;
+  }
+  &-btn {
+    background: $primary-color;
+    color: #fff;
+    padding: 10px 20px;
+    &:hover {
+      background: $secondary-color;
+    }
+  }
+}
+
+$font-sizes: (
+  "font-18px": 18px,
+  "font-16px": 16px,
+  "font-14px": 14px,
+);
+
+@each $class, $size in $font-sizes {
+  .#{$class} {
+    font-size: $size;
+  }
+}
+
+
+.finish-btn {
+  @media (max-width: 1024px) and (min-width: 670px) {
+    width: 50%; // half screen on tablet
+  }
+  @media (max-width: 600px) {
+    width: 100%; // full width on mobile
+  }
+}
+
+
+.container {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@import "mixins";
+@include grid-system;

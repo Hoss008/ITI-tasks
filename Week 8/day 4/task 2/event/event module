@@ -1,0 +1,13 @@
+// eventModule.js
+const EventEmitter = require("events");
+const emitter = new EventEmitter();
+
+function on(eventName, callback) {
+  emitter.on(eventName, callback);
+}
+
+function emit(eventName, data) {
+  emitter.emit(eventName, data);
+}
+
+module.exports = { on, emit };

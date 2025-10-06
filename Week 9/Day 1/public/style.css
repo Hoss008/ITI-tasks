@@ -1,0 +1,44 @@
+
+/* Container styling */
+.clients-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f7fa;
+}
+
+/* Empty message or error */
+.no-clients,
+.error-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Each client card */
+.client-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  color: white;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.client-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.client-card h3 {
+  margin-top: 0;
+}
+
+.client-card p {
+  margin: 5px 0;
+}

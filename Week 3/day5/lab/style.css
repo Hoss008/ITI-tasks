@@ -1,0 +1,26 @@
+#btnPlay{
+    padding: 10px;
+    margin: 20px;
+    background-color: rgb(131, 187, 168);
+    border-radius: 30%;
+}
+#btnStop{
+    padding: 10px;
+    margin: 20px;
+    background-color: rgb(131, 187, 168);
+    border-radius: 30%;
+}
+#btnmute{
+    padding: 10px;
+    margin: 20px;
+    background-color: rgb(131, 187, 168);
+    border-radius: 30%;
+}
+
+#myrange{
+    margin: 20px;
+}
+
+#vid{
+display: block;
+}

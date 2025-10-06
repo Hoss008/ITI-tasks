@@ -1,0 +1,70 @@
+
+body{
+    background-color: rgb(166, 151, 151);
+}
+
+[type = text] {
+
+}
+
+[val*=a]{
+    /* includes a */
+}
+
+[val$='aaa']
+/* ends with an aaa */
+
+a:active{
+    /* style linked with an action */
+}
+
+h1{
+ 
+  font-family: "Playwrite HU", cursive;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+
+h1:hover{
+    background-color: black;
+}
+
+h1::after{
+    content: "text from css";
+}
+
+h1::before{
+    content: "damn";
+}
+
+h1::first-letter{
+    text-transform: capitalize;
+}
+
+h1::first-line{
+    color: cadetblue;
+}
+
+ul li:nth-child(even){
+    color: red;
+}
+
+input:invalid{
+    border: 2px solid red;
+}
+
+input:valid{
+    outline: 2px blue dashed;
+    border: 2px solid green;
+}
+#div1{
+    border: 2px;
+    color: rgb(211, 126, 22);
+    width: 150px;
+    height: 150px;
+    border-radius: 10px 20px 30px 40px;
+    box-shadow: -10px 20px red; 
+}

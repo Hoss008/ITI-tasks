@@ -1,0 +1,27 @@
+$grid-columns: 12;
+$breakpoints: (
+  sm: 570px,
+  md: 760px,
+  lg: 990px,
+  xl: 1024px,
+);
+
+@mixin grid-system {
+
+  @for $i from 1 through $grid-columns {
+    .col-#{$i} {
+      flex: 0 0 percentage($i / $grid-columns);
+      max-width: percentage($i / $grid-columns);
+    }
+  }
+
+  @each $breakpoint, $size in $breakpoints {
+    @media (min-width: $size) {
+      @for $i from 1 through $grid-columns {
+        .col-#{$breakpoint}-#{$i} {
+          max-width: percentage($i / $grid-columns);
+        }
+      }
+    }
+  }
+}

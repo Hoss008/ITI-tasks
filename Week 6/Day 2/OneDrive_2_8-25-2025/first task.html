@@ -1,0 +1,724 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Website created by Mads Kjaer - www.madskjaer.dk -->
+
+    <title>The Flower Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        /* border: 2px solid red; */
+      }
+
+      header,
+      footer,
+      section,
+      aside,
+      nav,
+      article {
+        display: block;
+      }
+
+      body {
+        margin: 0 auto;
+        padding: 2% 0;
+        width: 100%;
+        font: 0.8125rem/1.375rem Helvetica, Arial, sans-serif;
+        background: #f0f0f0;
+        /* font 5 */
+      }
+
+      h1,
+      h2 {
+        font-size: 1.75rem;
+        line-height: 2.75rem;
+        padding: 1.375rem 0;
+      }
+
+      h3 {
+        font-size: 1.125rem;
+        line-height: 1.375rem;
+        padding: 0.6875rem 0;
+      }
+
+      p {
+        padding-bottom: 1.2em;
+      }
+
+      /*------------------------------NAVIGATION------------------------------*/
+      nav {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background: url("images/nav_background.png");
+      }
+  
+      nav ul {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0 auto;
+        width: 95%;
+        list-style: none;
+      }
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+        }
+      }
+
+     
+
+      nav ul li a {
+        display: block;
+        margin-right: 3.5vw;
+        width: 12vw;
+        font-size: 0.875rem;
+        line-height: 2.75rem;
+        text-align: center;
+        text-decoration: none;
+        color: #777;
+        white-space: nowrap;
+      }
+
+      nav ul li a:hover {
+        color: #fff;
+      }
+
+      nav ul li.selected a {
+        color: #fff;
+      }
+      nav ul li.subscribe {
+        margin-right: 4rem;
+      }
+
+      nav ul li.subscribe a {
+        margin-left: 4.2vw;
+        padding-left: 5vw;
+        text-align: left;
+        background: url("images/rss.png") left center no-repeat;
+      }
+
+      /*------------------------------INTRODUCTION------------------------------*/
+
+      #intro {
+        position: relative;
+        margin-top: 4rem;
+        padding: 2.75rem;
+        background: #467612 url("images/intro_background.png") repeat-x;
+        background-size: 100%;
+        border-radius: 1.375rem;
+      }
+      @media (max-width: 768px) {
+        #intro {
+          margin-top: 15rem;
+        }
+      }
+      #intro h2 {
+        position: relative;
+        padding: 0 0 1.3rem 0;
+        font-weight: normal;
+        color: #fff;
+      }
+
+      #intro p {
+        position: relative;
+        padding: 0;
+        color: #d9f499;
+      }
+
+      #intro img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60%;
+        height: 100%;
+        border-radius: 1.375rem;
+      }
+
+      /*------------------------------CONTENT AREA AND SIDEBAR LAYOUT------------------------------*/
+  
+      #content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      #mainContent {
+        padding-right: 2%;
+      }
+     
+      aside {
+        flex-shrink: 0;
+        flex-basis: 30%;
+        background: url("images/sidebar_background.png") top left;
+      }
+      /*------------------------------BLOG POST------------------------------*/
+      .blogPost header p,
+      .blogPost header p a {
+        font-size: 14px;
+        font-style: italic;
+        color: #777;
+      }
+
+      .blogPost header p a:hover {
+        text-decoration: none;
+        color: #000;
+      }
+
+      .blogPost img {
+        margin: 22px 0;
+        box-shadow: 3px 3px 7px #777;
+      }
+
+      /*------------------------------COMMENTS------------------------------*/
+
+      #comments {
+        margin-top: 1.3rem;
+        padding-top: 1.375rem;
+        border-top: 1px solid #d7d7d7;
+      }
+
+      
+      #comments article {
+        display: flex;
+        align-items: flex-start;
+        padding: 22px;
+      }
+
+      #comments article:nth-child(odd) {
+        padding: 1.3125rem;
+        background: #e3e3e3;
+        border: 1px solid #d7d7d7;
+        border-radius: 0.6875rem;
+      }
+
+      #comments article header {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 13.75rem;
+      }
+      #comments article header a {
+        display: block;
+        font-weight: bold;
+        color: #000;
+      }
+
+      #comments article header a:hover {
+        text-decoration: none;
+      }
+
+      #comments article p {
+        padding: 0;
+      }
+
+      /*------------------------------COMMENT FORM------------------------------*/
+
+      form {
+        margin-top: 21px;
+        padding-top: 22px;
+        border-top: 1px solid #d7d7d7;
+      }
+
+
+      form p {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 22px;
+        padding: 0 22px;
+      }
+
+      form label {
+        width: 8.75rem;
+        padding-right: 1.25rem;
+        text-align: right;
+        font-weight: bold;
+      }
+      form input[type="text"] {
+        display: table-cell;
+        width: 18.75rem;
+        height: 1.25rem;
+        border: 1px solid #d7d7d7;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+
+      form textarea {
+        width: 18.75rem;
+        height: 6.25rem;
+        border: 1px solid #d7d7d7;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+
+      form input[type="submit"] {
+        margin-left: 10.125rem;
+      }
+
+      /*------------------------------SIDEBAR------------------------------*/
+
+      aside section {
+        margin: 1.375rem 0 0 1.375rem;
+        padding: 0.6875rem 1.375rem;
+        background: url("images/sidebar_section_background.png") repeat-x;
+        border-radius: 0.6875rem;
+      }
+
+      aside section ul {
+        margin: 0 0 0 22px;
+        list-style: none;
+      }
+
+      aside section ul li a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+      }
+
+      aside section ul li a:hover {
+        text-decoration: underline;
+      }
+
+      /*------------------------------FOOTER------------------------------*/
+      footer {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background: #222;
+      }
+
+      footer div {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        padding: 2.75rem 0;
+        width: 80%;
+        color: #777;
+      }
+
+      footer div section {
+        flex: 0 0 18.75rem;
+      }
+      footer div #about,
+      footer div #blogroll {
+        padding-right: 20px;
+      }
+
+      footer h3 {
+        color: #fff;
+      }
+
+      footer a {
+        color: #999;
+      }
+
+      footer a:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      footer ul {
+        margin: 0 0 0 40px;
+        list-style: square;
+        color: #565656;
+      }
+
+      footer ul li a {
+        display: block;
+      }
+      @media (max-width: 700px) {
+        aside {
+          display: none;
+        }
+      }
+      @media (max-width: 700px) {
+        form {
+          display: none;
+        }
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      @media (min-width: 900px) {
+        .col-sm-1 {
+          width: calc((100% / 12) * 1);
+        }
+
+        .col-sm-2 {
+          width: calc((100% / 12) * 2);
+        }
+
+        .col-sm-3 {
+          width: calc((100% / 12) * 3);
+        }
+
+        .col-sm-4 {
+          width: calc((100% / 12) * 4);
+        }
+
+        .col-sm-5 {
+          width: calc((100% / 12) * 5);
+        }
+
+        .col-sm-6 {
+          width: calc((100% / 12) * 6);
+        }
+
+        .col-sm-7 {
+          width: calc((100% / 12) * 7);
+        }
+
+        .col-sm-8 {
+          width: calc((100% / 12) * 8);
+        }
+
+        .col-sm-9 {
+          width: calc((100% / 12) * 9);
+        }
+
+        .col-sm-10 {
+          width: calc((100% / 12) * 10);
+        }
+
+        .col-sm-11 {
+          width: calc((100% / 12) * 11);
+        }
+
+        .col-sm-12 {
+          width: calc((100% / 12) * 12);
+        }
+
+        .col-md-1 {
+          width: calc((100% / 12) * 1);
+        }
+
+        .col-md-2 {
+          width: calc((100% / 12) * 2);
+        }
+
+        .col-md-3 {
+          width: calc((100% / 12) * 3);
+        }
+
+        .col-md-4 {
+          width: calc((100% / 12) * 4);
+        }
+
+        .col-md-5 {
+          width: calc((100% / 12) * 5);
+        }
+
+        .col-md-6 {
+          width: calc((100% / 12) * 6);
+        }
+
+        .col-md-7 {
+          width: calc((100% / 12) * 7);
+        }
+
+        .col-md-8 {
+          width: calc((100% / 12) * 8);
+        }
+
+        .col-md-9 {
+          width: calc((100% / 12) * 9);
+        }
+
+        .col-md-10 {
+          width: calc((100% / 12) * 10);
+        }
+
+        .col-md-11 {
+          width: calc((100% / 12) * 11);
+        }
+
+        .col-md-12 {
+          width: calc((100% / 12) * 12);
+        }
+      }
+      @media (min-width: 1200px) {
+        .col-lg-1 {
+          width: calc((100% / 12) * 1);
+        }
+
+        .col-lg-2 {
+          width: calc((100% / 12) * 2);
+        }
+
+        .col-lg-3 {
+          width: calc((100% / 12) * 3);
+        }
+
+        .col-lg-4 {
+          width: calc((100% / 12) * 4);
+        }
+
+        .col-lg-5 {
+          width: calc((100% / 12) * 5);
+        }
+
+        .col-lg-6 {
+          width: calc((100% / 12) * 6);
+        }
+
+        .col-lg-7 {
+          width: calc((100% / 12) * 7);
+        }
+
+        .col-lg-8 {
+          width: calc((100% / 12) * 8);
+        }
+
+        .col-lg-9 {
+          width: calc((100% / 12) * 9);
+        }
+
+        .col-lg-10 {
+          width: calc((100% / 12) * 10);
+        }
+
+        .col-lg-11 {
+          width: calc((100% / 12) * 11);
+        }
+
+        .col-lg-12 {
+          width: calc((100% / 12) * 12);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>The Flower Blog</h1>
+    </header>
+    <nav>
+      <ul>
+        <li class="selected"><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Archives</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="subscribe"><a href="#">Subscribe via. RSS</a></li>
+      </ul>
+    </nav>
+    <section id="intro">
+      <header>
+        <h2>Do you love flowers as much as we do?</h2>
+      </header>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut.
+      </p>
+      <img src="images/intro_flower.png" alt="Flower" />
+    </section>
+
+    <section id="content">
+      <section id="mainContent">
+        <section>
+          <article class="blogPost">
+            <header>
+              <h2>This is the title of a blog post</h2>
+              <p>
+                Posted on June 29th 2009 by <a href="#">Mads Kjaer</a> -
+                <a href="#comments">3 comments</a>
+              </p>
+            </header>
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+                euismod tellus eu orci imperdiet nec rutrum lacus blandit. Cras
+                enim nibh, sodales ultricies elementum vel, fermentum id tellus.
+                Proin metus odio, ultricies eu pharetra dictum, laoreet id odio.
+                Curabitur in odio augue. Morbi congue auctor interdum. Phasellus
+                sit amet metus justo. Phasellus vitae tellus orci, at elementum
+                ipsum. In in quam eget diam adipiscing condimentum. Maecenas
+                gravida diam vitae nisi convallis vulputate quis sit amet nibh.
+                Nullam ut velit tortor. Curabitur ut elit id nisl volutpat
+                consectetur ac ac lorem. Quisque non elit et elit lacinia
+                lobortis nec a velit. Sed ac nisl sed enim consequat porttitor.
+              </p>
+              <figure>
+                <img src="images/flower.png" alt="Flower" />
+                <figcaption><i>This is a beautiful flower</i></figcaption>
+              </figure>
+              <br />
+              <p>
+                Pellentesque ut sapien arcu, egestas mollis massa. Fusce lectus
+                leo, fringilla at aliquet sit amet, volutpat non erat. Aenean
+                molestie nibh vitae turpis venenatis vel accumsan nunc
+                tincidunt. Suspendisse id purus vel felis auctor mattis non ac
+                erat. Pellentesque sodales venenatis condimentum. Aliquam sit
+                amet nibh nisi, ut pulvinar est. Sed ullamcorper nisi vel tortor
+                volutpat eleifend. Vestibulum iaculis ullamcorper diam
+                consectetur sagittis. Quisque vitae mauris ut elit semper
+                condimentum varius nec nisl. Nulla tempus porttitor dolor ac
+                eleifend. Proin vitae purus lectus, a hendrerit ipsum. Aliquam
+                mattis lacinia risus in blandit.
+              </p>
+              <p>
+                Vivamus vitae nulla dolor. Suspendisse eu lacinia justo.
+                Vestibulum a felis ante, non aliquam leo. Aliquam eleifend, est
+                viverra semper luctus, metus purus commodo elit, a elementum
+                nisi lectus vel magna. Praesent faucibus leo sit amet arcu
+                vehicula sed facilisis eros aliquet. Etiam sodales, enim sit
+                amet mollis vestibulum, ipsum sapien accumsan lectus, eget
+                ultricies arcu velit ut diam. Aenean fermentum luctus nulla, eu
+                malesuada urna consequat in. Pellentesque habitant morbi
+                tristique senectus et netus et malesuada fames ac turpis
+                egestas. Pellentesque massa lacus, sodales id facilisis ac,
+                lobortis sed arcu. Donec hendrerit fringilla ligula, ac rutrum
+                nulla bibendum id. Cras sapien ligula, tincidunt eget euismod
+                nec, ultricies eu augue. Nulla vitae velit sollicitudin magna
+                mattis eleifend. Nam enim justo, vulputate vitae pretium ac,
+                rutrum at turpis. Aenean id magna neque. Sed rhoncus aliquet
+                viverra.
+              </p>
+            </div>
+          </article>
+        </section>
+        <section id="comments">
+          <h3>Comments</h3>
+          <article>
+            <header>
+              <a href="#">George Washington</a> on June 29th 2009 at 23:35
+            </header>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut.
+            </p>
+          </article>
+          <article>
+            <header>
+              <a href="#">Benjamin Franklin</a> on June 29th 2009 at 23:40
+            </header>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut.
+            </p>
+          </article>
+          <article>
+            <header>
+              <a href="#">Barack Obama</a> on June 29th 2009 at 23:59
+            </header>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut.
+            </p>
+          </article>
+        </section>
+        <form action="#" method="post">
+          <h3>Post a comment</h3>
+          <p>
+            <label for="name"> Name</label>
+            <input name="name" id="name" type="text" />
+          </p>
+          <p>
+            <label for="email"> E-mail</label>
+            <input name="email" id="email" type="text" />
+          </p>
+          <p>
+            <label for="website"> Website</label>
+            <input name="website" id="website" type="text" />
+          </p>
+          <p>
+            <label for="comment"> Comment</label>
+            <textarea name="comment" id="comment"></textarea>
+          </p>
+          <p>
+            <input type="submit" value="Post comment" />
+          </p>
+        </form>
+      </section>
+      <aside>
+        <section>
+          <header>
+            <h3>Categories</h3>
+          </header>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Sit amet consectetur</a></li>
+            <li><a href="#">Adipisicing elit sed</a></li>
+            <li><a href="#">Do eiusmod tempor</a></li>
+            <li><a href="#">Incididunt ut labore</a></li>
+          </ul>
+        </section>
+        <section>
+          <header>
+            <h3>Archives</h3>
+          </header>
+          <ul>
+            <li><a href="#">December 2008</a></li>
+            <li><a href="#">January 2009</a></li>
+            <li><a href="#">February 2009</a></li>
+            <li><a href="#">March 2009</a></li>
+            <li><a href="#">April 2009</a></li>
+            <li><a href="#">May 2009</a></li>
+            <li><a href="#">June 2009</a></li>
+          </ul>
+        </section>
+      </aside>
+    </section>
+
+    <footer>
+      <div >
+        <section id="about" class="row col-lg-4">
+          <header class="col-sm-12 col-lg-4">
+            <h3 >About</h3>
+          </header>
+          <p class="col-sm-12 col-lg-4">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco
+            <a href="#">laboris nisi ut aliquip</a> ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </section>
+        <section id="blogroll" class="row col-lg-4">
+          <header class="col-sm-12 col-lg-4">
+            <h3>Blogroll</h3>
+          </header class="col-sm-12 col-lg-4">
+          <ul class="col-sm-12 col-lg-4">
+            <li><a href="#">NETTUTS+</a></li>
+            <li><a href="#">FreelanceSwitch</a></li>
+            <li><a href="#">In The Woods</a></li>
+            <li><a href="#">Netsetter</a></li>
+            <li><a href="#">PSDTUTS+</a></li>
+          </ul >
+        </section>
+        <section id="popular" class="row col-lg-4">
+          <header class="col-sm-12 col-lg-4">
+            <h3>Popular</h3>
+          </header>
+          <ul class="col-sm-12 col-lg-4">
+            <li><a href="#">This is the title of a blog post</a></li>
+            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+            <li>
+              <a href="#">Consectetur adipisicing elit, sed do eiusmod</a>
+            </li>
+            <li><a href="#">Duis aute irure dolor</a></li>
+            <li><a href="#">Excepteur sint occaecat cupidatat</a></li>
+            <li><a href="#">Reprehenderit in voluptate velit</a></li>
+            <li><a href="#">Officia deserunt mollit anim id est laborum</a></li>
+            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+          </ul>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

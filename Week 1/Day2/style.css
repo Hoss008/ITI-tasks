@@ -1,0 +1,62 @@
+p{
+    color: rgb(255, 255, 255);
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 30px;
+}
+
+div>p{ /*direct parent*/
+    color: brown; 
+}
+
+div span{
+    color: gray;  
+    direction: ltr;
+    text-align: start;
+    text-decoration: line-through red;
+}
+
+#p2{  /* id selector */
+    background-color: rgb(16, 19, 189);
+}
+
+*{
+    color: rgba(255, 255, 255,0.5); /*opacity*/
+}
+
+input[type = password]{
+    color: red;
+}
+
+/* 
+multiple selector 
+h1,h3,div,div>p>span 
+ {
+styling
+}
+*/
+
+p{
+    /* color: blue; */
+     /*most powerful  !important*/
+}
+
+p{
+    /* color: red;     */
+    /*the last style wins  , also the one with the more specfication wins*/
+}
+
+#p4{
+    color: darkslategray;
+    background-image: url();
+    background-attachment: local;
+    width: 75%; /*of the parent (body)*/
+    overflow: auto;
+    padding: 10px 20px 30px 40px ; /*clock wise direction starting from top - internal space*/
+    margin: 10px 20px;  /*top and bottom 10px and left and right 20px - external space*/
+    border: 30px;
+
+
+}

@@ -1,0 +1,134 @@
+body {
+    background-color: #f7e69b;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 350px;
+    height: 550px;
+    background-color: #fff;
+    border: 3px solid black;
+    box-shadow: 10px 10px 0px black;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    background: linear-gradient(to right, #ff9900, #ff6600);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 3px solid black;
+    border-radius: 5px;
+}
+
+.title h1 {
+    margin: 0;
+    font-size: 2em;
+    text-shadow: 2px 2px 0px black;
+}
+
+.content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.task-form {
+    background-color: #ff3300;
+    border: 3px solid black;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.task-form h2 {
+    color: white;
+    text-align: center;
+    margin: 0 0 10px 0;
+    text-shadow: 1px 1px 0px black;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    color: white;
+    text-shadow: 1px 1px 0px black;
+}
+
+.input-group input, .input-group select {
+    padding: 8px;
+    border: 2px solid black;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+.time-fields {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.time-fields input {
+    flex: 1;
+}
+
+.date-fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-fields .field-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.add-button {
+    background-color: #fff;
+    border: 2px solid black;
+    padding: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px black;
+    transition: transform 0.1s ease;
+}
+
+.add-button:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px black;
+}
+
+.task-list {
+    background-color: #ff9900;
+    border: 3px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.task-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: white;
+    text-shadow: 1px 1px 0px black;
+}
+
+.task-list li {
+    margin-bottom: 5px;
+}

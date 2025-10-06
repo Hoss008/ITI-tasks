@@ -1,0 +1,13 @@
+const eventModule = require('./eventModule');
+
+eventModule.on('ticketCreated', (ticket) => {
+  console.log('New ticket created:', ticket);
+});
+
+eventModule.emit('ticketCreated', {
+  seatNum: '12A',
+  flightNum: 'MS804',
+  departure: 'CAI',
+  arrival: 'JFK',
+  travelDate: '2025-09-20'
+});

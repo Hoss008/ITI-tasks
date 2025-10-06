@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome {name}!</h1>
+      <p>Your entered data is as follows:</p>
+      <ul>
+        <li><strong>Mobile Number:</strong> {mobile}</li>
+        <li><strong>Email:</strong> {email}</li>
+        <li><strong>Address:</strong> {address}</li>
+      </ul>
+      <hr />
+      <button id="showClientsBtn">Show All Stored Clients</button>
+      <div id="clients-container"></div>
+    </div>
+
+    <script>
+      function loadClients() {
+        fetch("/clients")
+          .then((response) => response.json())
+          .then((data) => {
+            const container = document.getElementById("clients-container");
+            container.innerHTML = "<h2>All Clients:</h2>";
+
+            const list = document.createElement("ul");
+
+            data.forEach((client, index) => {
+              const listItem = document.createElement("li");
+              listItem.innerHTML = `
+            <strong>Name:</strong> ${client.name}<br>
+            <strong>Email:</strong> ${client.email}<br>
+            <strong>Mobile:</strong> ${client.mobile}<br>
+            <strong>Address:</strong> ${client.address}<br>
+            <button onclick='updateClient(${index}, \`${encodeURIComponent(
+                JSON.stringify(client)
+              )}\`)'> Update</button>
+            <button onclick="deleteClient(${index})"> Delete</button>
+          `;
+              list.appendChild(listItem);
+            });
+
+            container.appendChild(list);
+          })
+          .catch((error) => console.error("Error fetching clients:", error));
+      }
+
+      function deleteClient(index) {
+        if (!confirm("Are you sure you want to delete this client?")) return;
+
+        fetch(`/clients/${index}`, { method: "DELETE" })
+          .then((res) => {
+            if (res.ok) {
+              loadClients();
+            } else {
+              alert("Error deleting client.");
+            }
+          })
+          .catch((error) => console.error("Error deleting client:", error));
+      }
+
+      function updateClient(index, clientData) {
+        const client = JSON.parse(decodeURIComponent(clientData));
+
+        const newName = prompt("Enter new name:", client.name);
+        const newEmail = prompt("Enter new email:", client.email);
+        const newMobile = prompt("Enter new mobile:", client.mobile);
+        const newAddress = prompt("Enter new address:", client.address);
+
+        if (!newName || !newEmail || !newMobile || !newAddress) {
+          alert("Update canceled. All fields are required.");
+          return;
+        }
+
+        const updatedClient = {
+          name: newName,
+          email: newEmail,
+          mobile: newMobile,
+          address: newAddress,
+        };
+
+        fetch(`/clients/${index}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedClient),
+        })
+          .then((res) => {
+            if (res.ok) {
+              loadClients();
+            } else {
+              alert("Error updating client.");
+            }
+          })
+          .catch((error) => console.error("Error updating client:", error));
+      }
+
+      document
+        .getElementById("showClientsBtn")
+        .addEventListener("click", loadClients);
+    </script>
+  </body>
+</html>
